@@ -9,7 +9,7 @@ const kafka = new Kafka({
 });
 
 const producer = kafka.producer();
-const consumer = kafka.consumer({ groupId: 'express-group' });
+const consumer = kafka.consumer({ groupId: 'kafka-express-group' });
 
 // Kafka 프로듀서 연결
 async function connectProducer() {
