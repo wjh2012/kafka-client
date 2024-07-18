@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  input(type="text" id="messageInput" placeholder="Enter your message")
+  button#myButton Click Me
+
+  script.
+    document.getElementById('myButton').addEventListener('click', async function () {
+      const message = document.getElementById('messageInput').value;
+      if (message) {
+        await fetch('/kafka/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({message})
+        });
+      } else {
+        alert('Please enter a message');
+      }
+    });
